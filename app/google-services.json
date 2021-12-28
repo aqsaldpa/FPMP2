@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "907165100064",
+    "project_id": "fplogin-73b83",
+    "storage_bucket": "fplogin-73b83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907165100064:android:8fd30ae12309a70768b445",
+        "android_client_info": {
+          "package_name": "com.example.fp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907165100064-83md9rr1gvtsq5j1kcnnv964kt68dju1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCbS2WAS-PtQUZM7nM6U7M54TwyozaqzQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907165100064-83md9rr1gvtsq5j1kcnnv964kt68dju1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

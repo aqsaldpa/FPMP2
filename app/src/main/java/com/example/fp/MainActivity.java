@@ -1,71 +1,73 @@
 package com.example.fp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
     Button btnRegister;
-    Button login;
-    EditText username, pass;
+    Button btnlogin;
+    EditText inputemail, inputpass;
     CheckBox checkBox;
+    String email,password;
     boolean remember = false;
-    SharedPreferences preferences;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
+        inputemail = findViewById(R.id.etEmail);
+        inputpass = findViewById(R.id.etPassword);
 
-        username = findViewById(R.id.etUsername);
-        pass = findViewById(R.id.etPassword);
-        login = findViewById(R.id.btnLogin);
-        checkBox = findViewById(R.id.checkBox);
-        preferences = getSharedPreferences("Userinfo", 0); //0 (mode privat)
-
-        remember = preferences.getBoolean("checkbox", false);
-        if (remember) {
-            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
-
-        login.setOnClickListener(v -> {
-            String uservalue = username.getText().toString();
-            String pwvalue = pass.getText().toString();
-            String registereduser = preferences.getString("Username", "");
-            String registeredpass = preferences.getString("Password", "");
-
-            boolean checked = checkBox.isChecked();
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("checkbox", checked);
-            editor.commit();
-            editor.apply();
-
-            if (uservalue.length()>1 && pwvalue.length()>1) {
-                if (uservalue.equals(registereduser) && pwvalue.equals(registeredpass)) {
-                    Toast.makeText(MainActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }else {
-                Toast.makeText(MainActivity.this, "Username dan Password Salah!!!", Toast.LENGTH_SHORT).show();
+        btnlogin = findViewById(R.id.btnLogin);
+        btnlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cekLogin();
             }
         });
-
         btnRegister = findViewById(R.id.btnRegister);
-
-        btnRegister.setOnClickListener(v ->{
-            Intent i = new Intent (MainActivity.this,RegistrasiActivity.class);
-            startActivity(i);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,RegistrasiActivity.class));
+            }
         });
+    }
+    private void cekLogin() {
+        email = inputemail.getText().toString();
+        password = inputpass.getText().toString();
+
+        mAuth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent( MainActivity.this,ProfileActivity.class);
+                            startActivity(intent);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(MainActivity.this, "Login Gagal , Email atau Password Salah", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

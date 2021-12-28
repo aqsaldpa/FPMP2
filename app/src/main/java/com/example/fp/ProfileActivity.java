@@ -9,27 +9,24 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class ProfileActivity extends AppCompatActivity {
     Button logout;
     TextView tvUsername, tvEMail;
-    SharedPreferences preferences;
+
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        mAuth = FirebaseAuth.getInstance();
         logout = findViewById(R.id.btnLogout);
         tvUsername = findViewById(R.id.tvUsername);
         tvEMail = findViewById(R.id.tvEmail);
-        preferences = getSharedPreferences("UserInfo", 0);
-
-        tvUsername.setText(preferences.getString("Username", ""));
-        tvEMail.setText(preferences.getString("Email", ""));
 
         logout.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.clear();
-            editor.apply();
+
             Toast.makeText(this, "LOG OUT Berhasil!!!", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(ProfileActivity.this, MainActivity.class);
             startActivity(i);

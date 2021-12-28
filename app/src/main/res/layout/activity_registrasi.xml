@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrasiActivity"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg"
+    tools:context=".RegistrasiActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,8 +15,8 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,47 +35,12 @@
 
         </LinearLayout>
 
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="62dp"
-            android:layout_marginTop="36.7dp"
-            android:layout_marginRight="62dp"
-            android:background="@drawable/corner">
-
-            <EditText
-                android:id="@+id/etUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/username_icon"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/poppins_regular"
-                android:hint="Username"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:paddingLeft="17dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:textColor="#184AFF"
-                android:textColorHint="#0027B3"
-                android:textCursorDrawable="@drawable/bg"
-                android:textSize="12sp" />
-
-
-            <ImageView
-                android:id="@+id/username_icon"
-                android:layout_width="14.7dp"
-                android:layout_height="10.3dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="17dp"
-                android:src="@drawable/ic_baseline_person_24" />
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="62dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="62dp"
             android:background="@drawable/corner">
 
@@ -107,6 +72,7 @@
                 android:src="@drawable/ic_baseline_email_24" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -123,7 +89,7 @@
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/poppins_regular"
                 android:hint="Password"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:maxLines="1"
                 android:paddingLeft="17dp"
                 android:paddingTop="15dp"
@@ -143,6 +109,7 @@
                 android:src="@drawable/ic_baseline_vpn_key_24" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -159,7 +126,7 @@
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/poppins_regular"
                 android:hint="Confirmation Pass"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:maxLines="1"
                 android:paddingLeft="17dp"
                 android:paddingTop="15dp"
@@ -178,23 +145,46 @@
                 android:layout_marginLeft="17dp"
                 android:src="@drawable/ic_baseline_vpn_key_24" />
 
+
         </RelativeLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-           android:layout_margin="100dp"
-            android:background="@drawable/rounded_color"
-            android:fontFamily="@font/popmedium"
-            android:gravity="center"
-            android:text="Register"
-            android:textColor="#ffffff"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btnLogin" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/akun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Sudah ada akun"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.174"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_color"
+                android:fontFamily="@font/popmedium"
+                android:gravity="center"
+                android:text="Register"
+                android:textColor="#ffffff"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btnLogin" />
+        </LinearLayout>
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
