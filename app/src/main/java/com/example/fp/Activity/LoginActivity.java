@@ -1,10 +1,9 @@
-package com.example.fp;
+package com.example.fp.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,12 +11,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.fp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     Button btnRegister;
     Button btnlogin;
     EditText inputemail, inputpass;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         inputemail = findViewById(R.id.etEmail);
         inputpass = findViewById(R.id.etPassword);
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,RegistrasiActivity.class));
+                startActivity(new Intent(LoginActivity.this,RegistrasiActivity.class));
             }
         });
     }
@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent( MainActivity.this,ProfileActivity.class);
+                            Toast.makeText(LoginActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent( LoginActivity.this,ProfileActivity.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(MainActivity.this, "Login Gagal , Email atau Password Salah", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Login Gagal , Email atau Password Salah", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

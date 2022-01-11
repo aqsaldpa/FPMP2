@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".RegistrasiActivity">
+    tools:context=".Activity.RegistrasiActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="150dp"
                 android:layout_marginEnd="8dp"
-                android:text="Registration Here"
+                android:text="Register Your Account Here"
                 android:textColor="@android:color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -71,8 +71,51 @@
                 android:layout_marginLeft="17dp"
                 android:src="@drawable/ic_baseline_email_24" />
 
+            <ProgressBar
+                android:id="@+id/pbRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="62dp"
+            android:background="@drawable/corner">
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/usericon"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Username"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textColor="#184AFF"
+                android:textColorHint="#0027B3"
+                android:textCursorDrawable="@drawable/bg"
+                android:textSize="12sp" />
+
+
+            <ImageView
+                android:id="@+id/usericon"
+                android:layout_width="14.7dp"
+                android:layout_height="10.3dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/ic_baseline_supervised_user_circle_24" />
+
+        </RelativeLayout>
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -153,21 +196,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/akun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="Sudah ada akun"
-                android:textColor="@android:color/white"
-                android:textSize="15sp"
-                android:layout_marginBottom="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.174"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnRegister"
                 android:layout_width="wrap_content"
@@ -175,6 +203,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_color"
                 android:fontFamily="@font/popmedium"
+                android:layout_marginTop="40dp"
                 android:gravity="center"
                 android:text="Register"
                 android:textColor="#ffffff"
@@ -183,6 +212,21 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/btnLogin" />
+            <TextView
+                android:id="@+id/akun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="I have a account"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.174"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
         </LinearLayout>
 
 

@@ -1,22 +1,17 @@
-package com.example.fp;
+package com.example.fp.Activity;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.FragmentManager;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,8 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blikoon.qrcodescanner.QrCodeActivity;
+import com.example.fp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -37,9 +34,10 @@ public class ProfileActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_QR_SCAN = 101;
     BottomNavigationView bottomnav;
     FragmentManager fragmentManager;
-    Button logout,bayar;
+    Button logout,bayar,register;
     TextView tvUsername, tvEMail;
     FirebaseAuth mAuth;
+    FirebaseUser mUser;
     Button scan;
     String channelnotif = "channelku";
     String channelid = "default";
@@ -49,8 +47,28 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        tvEMail = findViewById(R.id.username);
         mAuth = FirebaseAuth.getInstance();
-        tvUsername = findViewById(R.id.tvUsername);
+        mUser = mAuth.getCurrentUser();
+        tvEMail.setText(mUser.getEmail());
+
+        logout = findViewById(R.id.btnLogout);
+        logout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            Toast.makeText(this, "Logout Berhasil", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(ProfileActivity.this, LoginActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+        });
+
+        register = findViewById(R.id.btnRegister);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this, RegisterBank.class));
+            }
+        });
 
         bayar = findViewById(R.id.btnbayar);
 
@@ -148,13 +166,10 @@ public class ProfileActivity extends AppCompatActivity {
             alertDialog.show();
 
         }
-        logout = findViewById(R.id.btnLogout);
-        logout.setOnClickListener(v -> {
 
-            Toast.makeText(this, "Logout Berhasil", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(ProfileActivity.this, MainActivity.class);
-            startActivity(i);
-        });
+
+
+
 
 
 

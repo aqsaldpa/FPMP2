@@ -1,136 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg"
+    tools:context=".Activity.ProfileActivity">
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/botomnav"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="2dp"
+        android:background="#3F51B5"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="auto"
+        app:menu="@menu/bottomnav" >
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="55dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="171dp"
+            android:layout_marginEnd="160dp"
+            android:src="@drawable/ic_baseline_qr_code_scanner_24"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/round_btn" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/hello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="35dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:fontFamily="@font/popmedium"
+            android:text="Hello,"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="38dp"
+            android:maxLines="1"
+            android:layout_toRightOf="@id/hello"
+            android:fontFamily="@font/popmedium"
+            android:text="User"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/illusttt"
+            android:layout_width="165dp"
+            android:layout_height="133dp"
+            android:layout_below="@id/username"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="-10dp"
+            android:background="@drawable/illust2" />
+
+        <TextView
+            android:id="@+id/tvwelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hello"
+            android:layout_marginStart="15dp"
+            android:layout_toRightOf="@id/profile_image"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Welcome , Enjoy the app"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvbasabasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvwelcome"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="155dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="125dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Total Balance"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvdollar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvbasabasi"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="136dp"
+            android:layout_marginEnd="105dp"
+            android:fontFamily="@font/popmedium"
+            android:text="$1000,0"
+            android:textColor="@color/white"
+            android:textSize="35sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRegister"
+            android:layout_width="190dp"
+            android:layout_height="32dp"
+            android:layout_below="@+id/tvdollar"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="-1dp"
+
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/rounded2_color"
+            android:fontFamily="@font/popmedium"
+            android:padding="5dp"
+            android:text="Add your account"
+            android:textColor="#000000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tvViewAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/illusttt"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="155dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="26dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="See all account"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+    </RelativeLayout>
 
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="286dp"
-        android:background="@drawable/wave"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/illustqr"
+        android:layout_width="104dp"
+        android:layout_height="136dp"
+        android:layout_below="@+id/rl"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="302dp"
+        android:layout_marginBottom="-100dp"
+        android:src="@drawable/scanillust" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:fontFamily="@font/popmedium"
-        android:text="Hello,"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:text="Welcome"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.284"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_color"
-        android:fontFamily="@font/popmedium"
-        android:padding="20dp"
-        android:text="Register your bank account"
-        android:textColor="#ffffff"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.563"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <TextView
+        android:id="@+id/tvqr"
         android:layout_width="231dp"
         android:layout_height="56dp"
+        android:layout_below="@+id/rl"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="70dp"
         android:layout_marginBottom="4dp"
         android:fontFamily="@font/poppins_regular"
         android:gravity="center"
         android:text="Yuk Scan QR Code dengan klik dibawah ini !"
         android:textColor="@color/white"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnScan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="13sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_below="@+id/tvqr"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-6dp"
+        android:layout_marginEnd="104dp"
         android:background="@drawable/rounded_color"
         android:fontFamily="@font/popmedium"
         android:padding="20dp"
         android:text="Scan QR Code Here"
         android:textColor="#ffffff"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.421" />
+        android:textSize="12sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnbayar"
         android:layout_width="131dp"
         android:layout_height="40dp"
+        android:layout_below="@+id/btnScan"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="center"
-        android:layout_marginTop="540dp"
+        android:layout_marginTop="147dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/rounded_color"
         android:fontFamily="@font/popmedium"
         android:text="bayar"
         android:textColor="#ffffff"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="12sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogout"
         android:layout_width="131dp"
         android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:layout_marginTop="608dp"
+        android:layout_marginEnd="237dp"
+        android:layout_marginBottom="179dp"
         android:background="@drawable/rounded_color"
         android:fontFamily="@font/popmedium"
         android:text="Logout"
         android:textColor="#ffffff"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953" />
+        android:textSize="12sp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
