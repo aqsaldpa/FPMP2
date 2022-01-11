@@ -2,19 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/home"
+        android:id="@+id/homee"
         android:icon="@drawable/ic_home"
         android:title="Home"/>
     <item
         android:id="@+id/anchor"
         app:showAsAction="ifRoom"
         android:title=""/>
-
-
-    <item
-        android:id="@+id/Transaksi"
-        android:icon="@drawable/ic_baseline_credit_card_24"
-        android:title="Transaction"/>
-
 
 </menu>

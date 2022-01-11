@@ -2,7 +2,9 @@ package com.example.fp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,8 +21,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blikoon.qrcodescanner.QrCodeActivity;
+import com.example.fp.CrudActivity;
 import com.example.fp.R;
+import com.example.fp.TopUpActivity;
+import com.example.fp.ViewDataActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.karumi.dexter.Dexter;
@@ -32,20 +38,37 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 public class ProfileActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_QR_SCAN = 101;
-    BottomNavigationView bottomnav;
     FragmentManager fragmentManager;
-    Button logout,bayar,register;
-    TextView tvUsername, tvEMail;
+    Button logout, bayar, register;
+    TextView tvUsername, tvEMail,tvView;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
-    Button scan;
+    Button scan , topup;
+    FloatingActionButton fabscan;
     String channelnotif = "channelku";
-    String channelid = "default";
-
+    BottomNavigationView bottomnav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        topup = findViewById(R.id.btnTopupp);
+        topup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this, TopUpActivity.class);
+                startActivity(i);
+            }
+        });
+        bottomnav = findViewById(R.id.botomnav);
+        tvView = findViewById(R.id.tvViewAccount);
+        tvView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent (ProfileActivity.this, CrudActivity.class));
+            }
+        });
+
 
         tvEMail = findViewById(R.id.username);
         mAuth = FirebaseAuth.getInstance();
@@ -75,7 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
         bayar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(ProfileActivity.this,"Testing Notif");
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(ProfileActivity.this, "Testing Notif");
                 builder.setContentTitle("Pembayaran anda telah sukses !");
                 builder.setContentText("Selamat!!!");
                 builder.setSmallIcon(R.drawable.ic_baseline_check_24);
@@ -98,8 +121,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        scan = findViewById(R.id.btnScan);
-        scan.setOnClickListener(new View.OnClickListener() {
+        fabscan = findViewById(R.id.fabscan);
+        fabscan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Dexter.withContext(getApplicationContext())
@@ -108,7 +131,7 @@ public class ProfileActivity extends AppCompatActivity {
                             @Override
                             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                                 Intent i = new Intent(ProfileActivity.this, QrCodeActivity.class);
-                                startActivityForResult( i,REQUEST_CODE_QR_SCAN);
+                                startActivityForResult(i, REQUEST_CODE_QR_SCAN);
                             }
 
                             @Override
@@ -125,6 +148,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -166,13 +190,5 @@ public class ProfileActivity extends AppCompatActivity {
             alertDialog.show();
 
         }
-
-
-
-
-
-
-
-
     }
 }
